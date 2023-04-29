@@ -1,4 +1,5 @@
 .main {
-  background-color: rgb(241, 0, 0);
-  grid-area: 'main';
+  background-color: #ffffff;
+  border-bottom-left-radius: 56px;
+  grid-area: main;
 }

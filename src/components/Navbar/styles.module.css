@@ -1,4 +1,7 @@
 .navbar {
-  background-color: rgb(14, 98, 255);
-  grid-area: 'navbar';
+  background: linear-gradient(180deg, #54d3c2 0%, #30898a 100%);
+  grid-area: navbar;
+  border-bottom-left-radius: 56px;
+  border-top-left-radius: 56px;
+  border-width: 0px;
 }

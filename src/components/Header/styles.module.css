@@ -1,4 +1,5 @@
 .header {
-  background-color: black;
-  grid-area: 'header';
+  background-color: white;
+  overflow: hidden;
+  grid-area: header;
 }
