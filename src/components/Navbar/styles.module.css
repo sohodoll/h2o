@@ -1,0 +1,4 @@
+.navbar {
+  background-color: rgb(14, 98, 255);
+  grid-area: 'navbar';
+}

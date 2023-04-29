@@ -1,0 +1,4 @@
+.wrapper {
+  background-color: burlywood;
+  grid-template-areas: 'navbar header' 'navbar main';
+}
