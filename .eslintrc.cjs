@@ -24,5 +24,6 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'import/prefer-default-export': 'off',
     'react/function-component-definition': 'off',
+    'no-plusplus': 'off',
   },
 };

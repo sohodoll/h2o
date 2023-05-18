@@ -1,4 +1,64 @@
 .generalEmployeesPage {
   background-color: #f8f8f8;
   border-radius: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  padding: 40px;
+  flex-direction: column;
+}
+
+.title {
+  font-weight: 800;
+  font-size: 28px;
+}
+
+.searchPanel {
+  margin-top: 25px;
+  padding: 40px;
+  border-radius: 24px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+}
+
+.contactsNum {
+  color: #54d3c2;
+  font-size: 28px;
+  font-weight: 600;
+  margin-right: 14px;
+}
+
+.contactsName {
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.searchBar {
+  width: 360px;
+  height: 48px;
+  background: #f8f8f8;
+  border-radius: 24px;
+  margin-left: 39px;
+  padding-left: 47px;
+}
+
+.button {
+  margin-left: auto;
+  color: #54d3c2;
+  border: 2px solid #54d3c2;
+  border-radius: 24px;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 15px;
+}
+
+.button:hover {
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }

@@ -1,0 +1,9 @@
+.filler {
+  background-color: #f8f8f8;
+  border-radius: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 4rem;
+}

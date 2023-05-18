@@ -1,5 +1,5 @@
 .header {
   background-color: white;
-  overflow: hidden;
   grid-area: header;
+  border-top-left-radius: 56px;
 }

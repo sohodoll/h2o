@@ -5,3 +5,14 @@
   border-top-left-radius: 56px;
   border-width: 0px;
 }
+
+.navbarContainer {
+  margin-top: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 64px;
+}
