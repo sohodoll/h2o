@@ -21,6 +21,8 @@ const createEmployees = () => {
         birthDate: '1990-01-01',
         station: 'Ладожская',
         address: 'Наставников 15 к2 кв 33',
+        bank: 'ВТБ',
+        cardNum: '3333 4445 4532 3353',
       };
     }
     employees[i] = employeeObjects;

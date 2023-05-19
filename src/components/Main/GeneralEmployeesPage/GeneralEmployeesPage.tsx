@@ -3,9 +3,9 @@ import styles from './styles.module.css';
 
 const { employees } = store;
 
-const mapped = employees[0].map((employee) => {
+const mapped = employees[1].map((employee) => {
   return (
-    <tr key={employee.id}>
+    <tr className={styles.employeeRow} key={employee.id}>
       <td>{employee.id}</td>
       <td>{employee.name}</td>
       <td colSpan={1}>{employee.id}</td>
@@ -14,6 +14,8 @@ const mapped = employees[0].map((employee) => {
       <td colSpan={1}>{employee.birthDate}</td>
       <td colSpan={1}>{employee.station}</td>
       <td colSpan={1}>{employee.address}</td>
+      <td colSpan={1}>{employee.bank}</td>
+      <td colSpan={1}>{employee.cardNum}</td>
     </tr>
   );
 });
@@ -40,20 +42,12 @@ export const GeneralEmployeesPage = () => {
 
         <div className={styles.tableContainer}>
           <table>
-            <colgroup>
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-              <col />
-            </colgroup>
             <thead className={styles.tableHead}>
               <tr>
                 <th rowSpan={2}>№</th>
                 <th rowSpan={2}>Имя сотрудника</th>
                 <th colSpan={6}>Основная информация</th>
+                <th colSpan={2}>Банковская информация</th>
               </tr>
               <tr>
                 <th colSpan={1}>ID Номер</th>
@@ -62,6 +56,8 @@ export const GeneralEmployeesPage = () => {
                 <th colSpan={1}>Дата рождения</th>
                 <th colSpan={1}>Метро</th>
                 <th colSpan={1}>Адрес проживания</th>
+                <th colSpan={1}>Банк</th>
+                <th colSpan={1}>Номер карты</th>
               </tr>
             </thead>
             <tbody className={styles.tableBody}>{mapped}</tbody>
