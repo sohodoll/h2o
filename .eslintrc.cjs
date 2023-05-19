@@ -25,5 +25,6 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/function-component-definition': 'off',
     'no-plusplus': 'off',
+    'jsx-a11y/control-has-associated-label': 'off',
   },
 };

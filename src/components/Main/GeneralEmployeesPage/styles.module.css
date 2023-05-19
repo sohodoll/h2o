@@ -62,3 +62,36 @@
 .button:hover {
   box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
+
+.tableContainer {
+  margin-top: 4rem;
+  max-height: 25.1rem;
+  overflow: hidden;
+  background: white;
+  border-radius: 56px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tableHead {
+  font-weight: 700;
+  font-size: 12px;
+  color: #54d3c2;
+}
+
+.tableBody {
+  font-weight: 600;
+  font-size: 12px;
+  color: #6d7986;
+}
+
+th,
+td {
+  padding: 10px;
+  border: 2px solid #f8f8f8;
+  text-align: center;
+  vertical-align: middle;
+}
