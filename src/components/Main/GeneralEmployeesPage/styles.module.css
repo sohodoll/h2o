@@ -101,7 +101,7 @@ td {
 
 ::-webkit-scrollbar {
   -webkit-appearance: none;
-  height: 6px;
+  height: 8px;
   max-width: 100px;
 }
 
@@ -109,4 +109,20 @@ td {
   width: 40px;
   border-radius: 5px;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  gap: 1rem;
+}
+
+.page {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.active {
+  color: #54d3c2;
 }

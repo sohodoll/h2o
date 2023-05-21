@@ -1,9 +1,0 @@
-.wrapper {
-  grid-template-areas:
-    'navbar header'
-    'navbar main';
-  background: linear-gradient(180deg, #54d3c2 0%, #30898a 100%);
-  grid-template-columns: 1fr 10fr;
-  grid-template-rows: 1fr 10fr;
-  border-radius: 56px;
-}

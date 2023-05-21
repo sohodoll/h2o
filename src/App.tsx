@@ -1,11 +1,15 @@
 import './App.css';
-import { DatabasePage } from 'components';
+import { Header, Main, Navbar } from 'components';
 import { BrowserRouter as Router } from 'react-router-dom';
 
 function App() {
   return (
     <Router>
-      <DatabasePage />
+      <div className="absolute inset-0 grid m-auto justify-center w-[95%] h-[90vh] wrapper">
+        <Header />
+        <Main />
+        <Navbar />
+      </div>
     </Router>
   );
 }
