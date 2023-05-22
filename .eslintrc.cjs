@@ -26,5 +26,6 @@ module.exports = {
     'react/function-component-definition': 'off',
     'no-plusplus': 'off',
     'jsx-a11y/control-has-associated-label': 'off',
+    'react/jsx-props-no-spreading': 'off',
   },
 };

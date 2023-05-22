@@ -1,28 +1,12 @@
 import { store } from 'store/store';
 import React, { useEffect } from 'react';
 import styles from './styles.module.css';
+import { Table } from './Table';
 
 const getEmployees = ({ pageNum }: { pageNum: number }) => {
   const { employees } = store;
 
-  const mapped = employees[pageNum].map((employee) => {
-    return (
-      <tr className={styles.employeeRow} key={employee.id}>
-        <td>{employee.count}</td>
-        <td>{employee.name}</td>
-        <td colSpan={1}>{employee.id}</td>
-        <td colSpan={1}>{employee.cell}</td>
-        <td colSpan={1}>{employee.gender}</td>
-        <td colSpan={1}>{employee.birthDate}</td>
-        <td colSpan={1}>{employee.station}</td>
-        <td colSpan={1}>{employee.address}</td>
-        <td colSpan={1}>{employee.bank}</td>
-        <td colSpan={1}>{employee.cardNum}</td>
-      </tr>
-    );
-  });
-
-  return mapped;
+  return employees[pageNum];
 };
 
 export const GeneralEmployeesPage = () => {
@@ -37,7 +21,6 @@ export const GeneralEmployeesPage = () => {
     const target = e.target as HTMLDivElement;
     const pageNum = target.innerText;
     setPage(+pageNum);
-    return employees;
   };
 
   useEffect(() => {
@@ -83,7 +66,15 @@ export const GeneralEmployeesPage = () => {
         </div>
 
         <div className={styles.tableContainer}>
-          <table>
+          <Table employees={employees} />
+        </div>
+        <div className={styles.pagination}>{createPages()}</div>
+      </div>
+    </div>
+  );
+};
+
+/* <table>
             <thead className={styles.tableHead}>
               <tr>
                 <th rowSpan={2}>№</th>
@@ -103,10 +94,4 @@ export const GeneralEmployeesPage = () => {
               </tr>
             </thead>
             <tbody className={styles.tableBody}>{employees}</tbody>
-          </table>
-        </div>
-        <div className={styles.pagination}>{createPages()}</div>
-      </div>
-    </div>
-  );
-};
+          </table> */

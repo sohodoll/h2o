@@ -15,6 +15,9 @@ export const Main = () => {
         <Route path="employees-database" element={<FillerPage />} />
         <Route path="employees-forms" element={<FillerPage />} />
         <Route path="calendar" element={<FillerPage />} />
+        <Route path="store" element={<FillerPage />} />
+        <Route path="charts" element={<FillerPage />} />
+        <Route path="settings" element={<FillerPage />} />
       </Routes>
     </main>
   );
