@@ -11,4 +11,4 @@
 
 ## Tech Stack
 
-TS, React, Vite, Tailwind, PostCSS, React-table
+TS, React, Vite, Tailwind, PostCSS
