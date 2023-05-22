@@ -4,7 +4,7 @@
 
 - Extendable table
 - Basic Navigation
-- Deploy link: https://cryptopros.netlify.app/
+- Deploy link: h2os.netlify.app
 - Development branch: https://github.com/sohodoll/h2o/tree/develop
 
 ## Tech Stack
