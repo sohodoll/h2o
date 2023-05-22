@@ -39,5 +39,3 @@ const createEmployees = () => {
 };
 
 export const store = createEmployees();
-
-window.store = store;
