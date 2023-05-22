@@ -6,7 +6,7 @@
 - Basic Navigation
 - Navbar
 - Pagination
-- Deploy link: https://h2os.netlify.app/full-employees-database
+- Deploy link: https://h2os.netlify.app/
 - Development branch: https://github.com/sohodoll/h2o/tree/develop
 
 ## Tech Stack
