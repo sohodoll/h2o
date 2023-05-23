@@ -7,6 +7,7 @@
 - Navbar
 - Pagination
 - Sort (by ID, count number)
+- Filter by search prompt (for IDs)
 - Deploy link: https://h2os.netlify.app/
 - Development branch: https://github.com/sohodoll/h2o/tree/develop
 
