@@ -21,12 +21,10 @@ export const getSortedEmployees = ({
     });
 
     if (sort.search) {
-      currentPageEmployees = currentPageEmployees.filter((employee) => {
-        if (sort.search) {
-          return employee.id.toString().includes(sort.search.toString());
-        }
-        return true;
-      });
+      const searchQuery = sort.search.toString().toLowerCase();
+      currentPageEmployees = currentPageEmployees.filter((employee) =>
+        employee.id.toString().toLowerCase().includes(searchQuery)
+      );
     }
   }
 
