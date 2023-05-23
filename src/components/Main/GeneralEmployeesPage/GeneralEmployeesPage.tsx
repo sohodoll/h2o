@@ -1,7 +1,7 @@
 import { store } from 'store/store';
 import React, { useEffect } from 'react';
+import { SortType } from 'types/SortType';
 import styles from './styles.module.css';
-import { SortType } from './types/SortType';
 import { EmployeesElements } from './components/EmployeesElements';
 
 export const GeneralEmployeesPage = () => {
@@ -13,6 +13,17 @@ export const GeneralEmployeesPage = () => {
 
   const [employees, setEmployees] = React.useState(
     EmployeesElements({ pageNum: page, sort })
+  );
+
+  const filterBySearch = React.useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.value) {
+        setSort({ ...sort, search: +e.target.value });
+      } else {
+        setSort({ ...sort, search: false });
+      }
+    },
+    [sort]
   );
 
   const changePageNum = React.useCallback(
@@ -47,7 +58,11 @@ export const GeneralEmployeesPage = () => {
     if (!sort) {
       setSort({ type: 'id', order: 'asc' });
     } else {
-      setSort({ type: 'id', order: sort.order === 'asc' ? 'desc' : 'asc' });
+      setSort({
+        type: 'id',
+        order: sort.order === 'asc' ? 'desc' : 'asc',
+        search: sort.search,
+      });
     }
   }, [sort]);
 
@@ -55,12 +70,20 @@ export const GeneralEmployeesPage = () => {
     if (!sort) {
       setSort({ type: 'count', order: 'asc' });
     } else {
-      setSort({ type: 'count', order: sort.order === 'asc' ? 'desc' : 'asc' });
+      setSort({
+        type: 'count',
+        order: sort.order === 'asc' ? 'desc' : 'asc',
+        search: sort.search,
+      });
     }
   }, [sort]);
 
   useEffect(() => {
-    setEmployees(EmployeesElements({ pageNum: page, sort }));
+    if (!sort.search) {
+      setEmployees(EmployeesElements({ pageNum: page, sort }));
+    } else {
+      setEmployees(EmployeesElements({ pageNum: page, sort }));
+    }
   }, [page, sort]);
 
   return (
@@ -72,9 +95,10 @@ export const GeneralEmployeesPage = () => {
           <span className={styles.contactsName}>Контактов</span>
           <div>
             <input
+              onChange={(e) => filterBySearch(e)}
               className={styles.searchBar}
               type="text"
-              placeholder="Поиск"
+              placeholder="Поиск (по ID)"
             />
           </div>
           <button type="button" className={styles.button}>

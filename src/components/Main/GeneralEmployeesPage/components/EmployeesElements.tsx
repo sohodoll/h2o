@@ -1,4 +1,4 @@
-import { getEmployees } from 'api/getEmployees';
+import { getSortedEmployees } from 'api/getSortedEmployees';
 import styles from '../styles.module.css';
 
 export const EmployeesElements = ({
@@ -8,7 +8,7 @@ export const EmployeesElements = ({
   pageNum: number;
   sort?: { type: 'id' | 'count'; order: 'asc' | 'desc' };
 }) => {
-  const currentPageEmployees = getEmployees({ pageNum, sort });
+  const currentPageEmployees = getSortedEmployees({ pageNum, sort });
 
   const mapped = currentPageEmployees.map((employee) => {
     return (

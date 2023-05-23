@@ -1,11 +1,12 @@
 import { store } from 'store/store';
+import { SortType } from 'types/SortType';
 
-export const getEmployees = ({
+export const getSortedEmployees = ({
   pageNum,
   sort,
 }: {
   pageNum: number;
-  sort?: { type: 'id' | 'count'; order: 'asc' | 'desc' };
+  sort?: SortType;
 }) => {
   const { employees } = store;
   let currentPageEmployees = employees[pageNum];
@@ -18,6 +19,15 @@ export const getEmployees = ({
       }
       return b[type] - a[type];
     });
+
+    if (sort.search) {
+      currentPageEmployees = currentPageEmployees.filter((employee) => {
+        if (sort.search) {
+          return employee.id.toString().includes(sort.search.toString());
+        }
+        return true;
+      });
+    }
   }
 
   return currentPageEmployees;
