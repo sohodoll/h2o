@@ -6,6 +6,7 @@
 - Basic Navigation
 - Navbar
 - Pagination
+- Sort (by ID, count number)
 - Deploy link: https://h2os.netlify.app/
 - Development branch: https://github.com/sohodoll/h2o/tree/develop
 
