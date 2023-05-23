@@ -24,6 +24,7 @@ const alias: AliasOptions = getAlias([
   'utils',
   'mocks',
   'store',
+  'api',
 ]);
 
 export default defineConfig({

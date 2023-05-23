@@ -12,8 +12,8 @@ import charts from '../../assets/icons/charts.png';
 const applyActiveStyle = ({ isActive }: { isActive: boolean }) => {
   return {
     display: 'flex',
-    'justify-content': 'center',
-    'align-items': 'center',
+    justifyContent: 'center',
+    alignItems: 'center',
     width: '64px',
     height: '64px',
     background: isActive ? 'rgba(169, 233, 224, 0.75)' : '',
@@ -29,43 +29,33 @@ export const Navbar = () => {
         <img className={styles.logo} src={logo} alt="logo" />
         <nav>
           <ul className={styles.sidebarLinks}>
-            <li>
-              <NavLink style={applyActiveStyle} to="/calendar">
-                <img src={calendar} alt="calendar" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink style={applyActiveStyle} to="/employees-forms">
-                <img src={list} alt="list" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink style={applyActiveStyle} to="/store">
-                <img src={store} alt="store" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink style={applyActiveStyle} to="/full-employees-database">
-                <img src={employees} alt="employees" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink style={applyActiveStyle} to="/employees-database">
-                <img src={database} alt="database" />
-              </NavLink>
-            </li>
-            <li>
-              <NavLink style={applyActiveStyle} to="/charts">
-                <img src={charts} alt="charts" />
-              </NavLink>
-            </li>
-            <li>
-              <li>
-                <NavLink style={applyActiveStyle} to="/settings">
-                  <img src={settings} alt="settings" />
-                </NavLink>
-              </li>
-            </li>
+            <NavLink style={applyActiveStyle} to="/calendar">
+              <img src={calendar} alt="calendar" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/employees-forms">
+              <img src={list} alt="list" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/store">
+              <img src={store} alt="store" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/full-employees-database">
+              <img src={employees} alt="employees" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/employees-database">
+              <img src={database} alt="database" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/charts">
+              <img src={charts} alt="charts" />
+            </NavLink>
+
+            <NavLink style={applyActiveStyle} to="/settings">
+              <img src={settings} alt="settings" />
+            </NavLink>
           </ul>
         </nav>
       </div>

@@ -1,49 +1,30 @@
 import { store } from 'store/store';
 import React, { useEffect } from 'react';
 import styles from './styles.module.css';
-
-const getEmployees = ({ pageNum }: { pageNum: number }) => {
-  const { employees } = store;
-
-  const mapped = employees[pageNum].map((employee) => {
-    return (
-      <tr className={styles.employeeRow} key={employee.id}>
-        <td>{employee.count}</td>
-        <td>{employee.name}</td>
-        <td colSpan={1}>{employee.id}</td>
-        <td colSpan={1}>{employee.cell}</td>
-        <td colSpan={1}>{employee.gender}</td>
-        <td colSpan={1}>{employee.birthDate}</td>
-        <td colSpan={1}>{employee.station}</td>
-        <td colSpan={1}>{employee.address}</td>
-        <td colSpan={1}>{employee.bank}</td>
-        <td colSpan={1}>{employee.cardNum}</td>
-      </tr>
-    );
-  });
-
-  return mapped;
-};
+import { SortType } from './types/SortType';
+import { EmployeesElements } from './components/EmployeesElements';
 
 export const GeneralEmployeesPage = () => {
   const [page, setPage] = React.useState(1);
+  const [sort, setSort] = React.useState<SortType>({
+    type: 'count',
+    order: 'asc',
+  });
+
   const [employees, setEmployees] = React.useState(
-    getEmployees({ pageNum: page })
+    EmployeesElements({ pageNum: page, sort })
   );
 
-  const changePageNum = (
-    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
-  ) => {
-    const target = e.target as HTMLDivElement;
-    const pageNum = target.innerText;
-    setPage(+pageNum);
-  };
+  const changePageNum = React.useCallback(
+    (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+      const target = e.target as HTMLDivElement;
+      const pageNum = target.innerText;
+      setPage(+pageNum);
+    },
+    []
+  );
 
-  useEffect(() => {
-    setEmployees(getEmployees({ pageNum: page }));
-  }, [page]);
-
-  const createPages = () => {
+  const createPages = React.useCallback(() => {
     const { totalCount } = store;
     const pages = [];
     for (let i = 1; i <= Math.ceil(totalCount / 8); i++) {
@@ -60,7 +41,27 @@ export const GeneralEmployeesPage = () => {
       pages.push(pageElement);
     }
     return pages;
-  };
+  }, [page, changePageNum]);
+
+  const sortById = React.useCallback(() => {
+    if (!sort) {
+      setSort({ type: 'id', order: 'asc' });
+    } else {
+      setSort({ type: 'id', order: sort.order === 'asc' ? 'desc' : 'asc' });
+    }
+  }, [sort]);
+
+  const sortByNum = React.useCallback(() => {
+    if (!sort) {
+      setSort({ type: 'count', order: 'asc' });
+    } else {
+      setSort({ type: 'count', order: sort.order === 'asc' ? 'desc' : 'asc' });
+    }
+  }, [sort]);
+
+  useEffect(() => {
+    setEmployees(EmployeesElements({ pageNum: page, sort }));
+  }, [page, sort]);
 
   return (
     <div className={`w-full h-full ${styles.generalEmployeesPage}`}>
@@ -85,20 +86,36 @@ export const GeneralEmployeesPage = () => {
           <table>
             <thead className={styles.tableHead}>
               <tr>
-                <th rowSpan={2}>№</th>
+                <th onClick={sortByNum} rowSpan={2}>
+                  №
+                </th>
                 <th rowSpan={2}>Имя сотрудника</th>
                 <th colSpan={6}>Основная информация</th>
                 <th colSpan={2}>Банковская информация</th>
+                <th colSpan={11}>Документы сотрудника</th>
               </tr>
               <tr>
-                <th colSpan={1}>ID Номер</th>
+                <th onClick={sortById} colSpan={1}>
+                  ID Номер
+                </th>
                 <th colSpan={1}>Телефон</th>
                 <th colSpan={1}>Пол</th>
                 <th colSpan={1}>Дата рождения</th>
                 <th colSpan={1}>Метро</th>
                 <th colSpan={1}>Адрес проживания</th>
                 <th colSpan={1}>Банк</th>
-                <th colSpan={1}>Номер карты</th>
+                <th colSpan={1}>Гражданство</th>
+                <th colSpan={1}>Паспорт</th>
+                <th colSpan={1}>Кем выдан</th>
+                <th colSpan={1}>Срок действия</th>
+                <th colSpan={1}>Место рождения</th>
+                <th colSpan={1}>Адрес прописки</th>
+                <th colSpan={1}>Срок действия</th>
+                <th colSpan={1}>Патент</th>
+                <th colSpan={1}>Срок дейтсвия</th>
+                <th colSpan={1}>СНИЛС</th>
+                <th colSpan={1}>ИНН</th>
+                <th colSpan={1}>Мед. книжка</th>
               </tr>
             </thead>
             <tbody className={styles.tableBody}>{employees}</tbody>
