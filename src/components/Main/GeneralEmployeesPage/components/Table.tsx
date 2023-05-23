@@ -11,7 +11,7 @@ export const Table = ({ sortByNum, sortById, employees }: TableProps) => {
     <table>
       <thead className={styles.tableHead}>
         <tr>
-          <th onClick={sortByNum} rowSpan={2}>
+          <th className={styles.sort} onClick={sortByNum} rowSpan={2}>
             №
           </th>
           <th rowSpan={2}>Имя сотрудника</th>
@@ -20,7 +20,7 @@ export const Table = ({ sortByNum, sortById, employees }: TableProps) => {
           <th colSpan={11}>Документы сотрудника</th>
         </tr>
         <tr>
-          <th onClick={sortById} colSpan={1}>
+          <th className={styles.sort} onClick={sortById} colSpan={1}>
             ID Номер
           </th>
           <th colSpan={1}>Телефон</th>

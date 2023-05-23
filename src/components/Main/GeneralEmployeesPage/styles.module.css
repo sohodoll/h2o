@@ -126,3 +126,7 @@ td {
 .active {
   color: #54d3c2;
 }
+
+.sort:hover {
+  cursor: pointer;
+}
