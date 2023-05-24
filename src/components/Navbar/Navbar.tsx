@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
+import logo from 'assets/icons/logo.png';
+import calendar from 'assets/icons/calendar.png';
+import list from 'assets/icons/list.png';
+import store from 'assets/icons/store.png';
+import database from 'assets/icons/database.png';
+import employees from 'assets/icons/employees.png';
+import settings from 'assets/icons/settings.png';
+import charts from 'assets/icons/charts.png';
 import styles from './styles.module.css';
-import logo from '../../assets/icons/logo.png';
-import calendar from '../../assets/icons/calendar.png';
-import list from '../../assets/icons/list.png';
-import store from '../../assets/icons/store.png';
-import database from '../../assets/icons/database.png';
-import employees from '../../assets/icons/employees.png';
-import settings from '../../assets/icons/settings.png';
-import charts from '../../assets/icons/charts.png';
 
 const applyActiveStyle = ({ isActive }: { isActive: boolean }) => {
   return {

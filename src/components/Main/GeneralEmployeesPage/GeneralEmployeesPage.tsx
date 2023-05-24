@@ -38,6 +38,18 @@ export const GeneralEmployeesPage = () => {
     []
   );
 
+  const changePageNumUp = React.useCallback(() => {
+    if (page < Math.ceil(totalCount / 8)) {
+      setPage(page + 1);
+    }
+  }, [page, totalCount]);
+
+  const changePageNumDown = React.useCallback(() => {
+    if (page > 1) {
+      setPage(page - 1);
+    }
+  }, [page]);
+
   const sortById = React.useCallback(() => {
     if (!sort) {
       setSort({ type: 'id', order: 'asc' });
@@ -94,7 +106,13 @@ export const GeneralEmployeesPage = () => {
           <Table {...{ sortById, sortByNum, employees }} />
         </div>
         <div className={styles.pagination}>
-          {CreatePagination({ totalCount, page, changePageNum })}
+          {CreatePagination({
+            totalCount,
+            page,
+            changePageNum,
+            changePageNumUp,
+            changePageNumDown,
+          })}
         </div>
       </div>
     </div>
