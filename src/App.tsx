@@ -5,7 +5,7 @@ import { BrowserRouter as Router } from 'react-router-dom';
 function App() {
   return (
     <Router>
-      <div className="absolute inset-0 grid m-auto justify-center w-[96%] h-[96vh] wrapper">
+      <div className="grid m-auto mt-10 justify-center w-[96%] h-full wrapper">
         <Header />
         <Main />
         <Navbar />
