@@ -68,7 +68,7 @@
   margin-top: 4rem;
   overflow-y: hidden;
   overflow-x: scroll;
-  max-height: 25.2rem;
+  height: 25.2rem;
   background: white;
   border-radius: 56px;
   max-width: clamp(400px, 80vw, 100%);

@@ -1,16 +1,17 @@
 import { getSortedEmployees } from 'api/getSortedEmployees';
 import styles from '../styles.module.css';
 
-export const EmployeesElements = ({
+export const CreateEmployeesElements = ({
   pageNum,
   sort,
 }: {
   pageNum: number;
   sort?: { type: 'id' | 'count'; order: 'asc' | 'desc' };
 }) => {
-  const currentPageEmployees = getSortedEmployees({ pageNum, sort });
+  const employees = getSortedEmployees({ pageNum, sort });
+  const pageEmployees = employees.slice((pageNum - 1) * 8, pageNum * 8);
 
-  const mapped = currentPageEmployees.map((employee) => {
+  const mapped = pageEmployees.map((employee) => {
     return (
       <tr className={styles.employeeRow} key={employee.id}>
         <td>{employee.count}</td>

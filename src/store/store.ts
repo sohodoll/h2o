@@ -24,35 +24,34 @@ export type Employee = {
 
 const createEmployees = () => {
   let count = 0;
-  const employees = [];
-  for (let i = 1; i < 10; i++) {
-    const employeeObjects: Employee[] = [];
-    for (let j = 1; j <= 8; j++) {
-      employeeObjects[j] = {
-        count: ++count,
-        id: Math.round(Math.random() * 100000),
-        name: 'Полякова Наталья',
-        cell: 89113452323,
-        gender: 'Женский',
-        birthDate: '1990-01-01',
-        station: 'Ладожская',
-        address: 'Наставников 15 к2 кв 33',
-        bank: 'ВТБ',
-        cardNum: '3333 4445 4532 3353',
-        residency: 'РФ',
-        passport: '4565 567887',
-        passportAddress: 'ТП 44 по СПб т Лен обл',
-        passportDate: '12.09.2024',
-        birthPlace: 'Узбекистан',
-        signAddress: 'Наставников 15к2 кв33',
-        patent: 'Регистрация',
-        deadline: '12.09.2024',
-        snils: '111-345-344 11',
-        inn: '354790582525',
-        medicine: '-',
-      };
-    }
-    employees[i] = employeeObjects;
+  const employees: Employee[] = [];
+
+  for (let j = 1; j <= 72; j++) {
+    const employee = {
+      count: ++count,
+      id: Math.round(Math.random() * 100000),
+      name: 'Полякова Наталья',
+      cell: 89113452323,
+      gender: 'Женский',
+      birthDate: '1990-01-01',
+      station: 'Ладожская',
+      address: 'Наставников 15 к2 кв 33',
+      bank: 'ВТБ',
+      cardNum: '3333 4445 4532 3353',
+      residency: 'РФ',
+      passport: '4565 567887',
+      passportAddress: 'ТП 44 по СПб т Лен обл',
+      passportDate: '12.09.2024',
+      birthPlace: 'Узбекистан',
+      signAddress: 'Наставников 15к2 кв33',
+      patent: 'Регистрация',
+      deadline: '12.09.2024',
+      snils: '111-345-344 11',
+      inn: '354790582525',
+      medicine: '-',
+    };
+
+    employees.push(employee);
   }
   return {
     employees,

@@ -2,8 +2,9 @@ import { store } from 'store/store';
 import React, { useEffect } from 'react';
 import { SortType } from 'types/SortType';
 import styles from './styles.module.css';
-import { EmployeesElements } from './components/EmployeesElements';
+import { CreateEmployeesElements } from './helpers/CreateEmployeesElements';
 import { Table } from './components/Table';
+import { CreatePagination } from './helpers/CreatePagination';
 
 export const GeneralEmployeesPage = () => {
   const [page, setPage] = React.useState(1);
@@ -13,8 +14,9 @@ export const GeneralEmployeesPage = () => {
   });
 
   const [employees, setEmployees] = React.useState(
-    EmployeesElements({ pageNum: page, sort })
+    CreateEmployeesElements({ pageNum: page, sort })
   );
+  const { totalCount } = store;
 
   const filterBySearch = React.useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -35,25 +37,6 @@ export const GeneralEmployeesPage = () => {
     },
     []
   );
-
-  const createPages = React.useCallback(() => {
-    const { totalCount } = store;
-    const pages = [];
-    for (let i = 1; i <= Math.ceil(totalCount / 8); i++) {
-      const pageElement = (
-        <button
-          type="button"
-          className={`${styles.page} ${page === i ? styles.active : ''}`}
-          onClick={(e) => changePageNum(e)}
-          key={i}
-        >
-          {i}
-        </button>
-      );
-      pages.push(pageElement);
-    }
-    return pages;
-  }, [page, changePageNum]);
 
   const sortById = React.useCallback(() => {
     if (!sort) {
@@ -81,9 +64,9 @@ export const GeneralEmployeesPage = () => {
 
   useEffect(() => {
     if (!sort.search) {
-      setEmployees(EmployeesElements({ pageNum: page, sort }));
+      setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
     } else {
-      setEmployees(EmployeesElements({ pageNum: page, sort }));
+      setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
     }
   }, [page, sort]);
 
@@ -110,7 +93,9 @@ export const GeneralEmployeesPage = () => {
         <div className={styles.tableContainer}>
           <Table {...{ sortById, sortByNum, employees }} />
         </div>
-        <div className={styles.pagination}>{createPages()}</div>
+        <div className={styles.pagination}>
+          {CreatePagination({ totalCount, page, changePageNum })}
+        </div>
       </div>
     </div>
   );
