@@ -65,7 +65,11 @@ export const GeneralEmployeesPage = () => {
 
   useEffect(() => {
     setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
-  }, [page, sort]);
+
+    if (page > Math.ceil(totalCount / 8)) {
+      setPage(1);
+    }
+  }, [page, sort, totalCount]);
 
   return (
     <div className={`w-full h-full ${styles.generalEmployeesPage}`}>
