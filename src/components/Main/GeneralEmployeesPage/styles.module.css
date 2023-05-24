@@ -68,7 +68,7 @@
   margin-top: 4rem;
   overflow-y: hidden;
   overflow-x: scroll;
-  height: 25.2rem;
+  height: 25.8rem;
   background: white;
   border-radius: 56px;
   max-width: clamp(400px, 80vw, 100%);
@@ -77,7 +77,7 @@
 }
 
 table {
-  width: 150vw;
+  width: 190vw;
   border-collapse: collapse;
 }
 
@@ -104,11 +104,17 @@ td {
 .tableContainer::-webkit-scrollbar {
   -webkit-appearance: none;
   height: 8px;
+  width: 8px;
 }
 
 .tableContainer::-webkit-scrollbar-thumb {
   border-radius: 5px;
   background-color: #b6bcc3;
+}
+
+.tableContainer::-webkit-scrollbar-thumb:active {
+  border-radius: 5px;
+  background-color: #868b91;
 }
 
 .pagination {
@@ -129,4 +135,28 @@ td {
 
 .sort:hover {
   cursor: pointer;
+}
+
+@media screen and (max-width: 1250px) {
+  .tableContainer {
+    overflow-y: scroll;
+  }
+
+  .searchPanel {
+    flex-direction: column;
+    gap: 1rem;
+    padding: 15px;
+  }
+
+  .searchPanel > button {
+    margin-left: 0;
+  }
+
+  .searchPanel > span {
+    margin-right: 0;
+  }
+
+  .searchPanel > div > input {
+    margin-left: 0;
+  }
 }
