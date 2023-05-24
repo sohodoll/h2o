@@ -3,13 +3,22 @@
 ## Features
 
 - Extendable table
-- Basic Navigation
+- Responsive design
+- Basic navigation
 - Navbar
 - Pagination
 - Sort (by ID, count number)
-- Filter by search prompt (for IDs)
+- Search prompt filter (for IDs)
+
+## Deploy
+
 - Deploy link: https://h2os.netlify.app/
 - Development branch: https://github.com/sohodoll/h2o/tree/develop
+
+## Coming Soon
+
+- Edit mode
+- Table Resizing
 
 ## Tech Stack
 
