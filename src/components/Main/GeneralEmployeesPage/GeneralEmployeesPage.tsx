@@ -1,5 +1,5 @@
 import { store } from 'store/store';
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback, useState } from 'react';
 import { SortType } from 'types/SortType';
 import styles from './styles.module.css';
 import { CreateEmployeesElements } from './helpers/CreateEmployeesElements';
@@ -7,29 +7,29 @@ import { Table } from './components/Table';
 import { CreatePagination } from './helpers/CreatePagination';
 
 export const GeneralEmployeesPage = () => {
-  const [page, setPage] = React.useState(1);
-  const [sort, setSort] = React.useState<SortType>({
+  const [page, setPage] = useState(1);
+  const [sort, setSort] = useState<SortType>({
     type: 'count',
     order: 'asc',
   });
 
-  const [employees, setEmployees] = React.useState(
+  const { totalCount } = store;
+  const [employees, setEmployees] = useState(() =>
     CreateEmployeesElements({ pageNum: page, sort })
   );
-  const { totalCount } = store;
 
-  const filterBySearch = React.useCallback(
+  const filterBySearch = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (e.target.value) {
-        setSort({ ...sort, search: +e.target.value });
-      } else {
-        setSort({ ...sort, search: false });
-      }
+      const searchValue = e.target.value;
+      setSort((prevSort) => ({
+        ...prevSort,
+        search: searchValue ? +searchValue : false,
+      }));
     },
-    [sort]
+    []
   );
 
-  const changePageNum = React.useCallback(
+  const changePageNum = useCallback(
     (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
       const target = e.target as HTMLDivElement;
       const pageNum = target.innerText;
@@ -38,48 +38,33 @@ export const GeneralEmployeesPage = () => {
     []
   );
 
-  const changePageNumUp = React.useCallback(() => {
+  const changePageNumUp = useCallback(() => {
     if (page < Math.ceil(totalCount / 8)) {
-      setPage(page + 1);
+      setPage((prevPage) => prevPage + 1);
     }
   }, [page, totalCount]);
 
-  const changePageNumDown = React.useCallback(() => {
+  const changePageNumDown = useCallback(() => {
     if (page > 1) {
-      setPage(page - 1);
+      setPage((prevPage) => prevPage - 1);
     }
   }, [page]);
 
-  const sortById = React.useCallback(() => {
-    if (!sort) {
-      setSort({ type: 'id', order: 'asc' });
-    } else {
-      setSort({
-        type: 'id',
-        order: sort.order === 'asc' ? 'desc' : 'asc',
-        search: sort.search,
-      });
-    }
-  }, [sort]);
-
-  const sortByNum = React.useCallback(() => {
-    if (!sort) {
-      setSort({ type: 'count', order: 'asc' });
-    } else {
-      setSort({
-        type: 'count',
-        order: sort.order === 'asc' ? 'desc' : 'asc',
-        search: sort.search,
-      });
-    }
-  }, [sort]);
+  const toggleSort = useCallback((type: SortType['type']) => {
+    setSort((prevSort) => {
+      if (!prevSort || prevSort.type !== type) {
+        return { type, order: 'asc', search: prevSort?.search };
+      }
+      return {
+        type,
+        order: prevSort.order === 'asc' ? 'desc' : 'asc',
+        search: prevSort.search,
+      };
+    });
+  }, []);
 
   useEffect(() => {
-    if (!sort.search) {
-      setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
-    } else {
-      setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
-    }
+    setEmployees(CreateEmployeesElements({ pageNum: page, sort }));
   }, [page, sort]);
 
   return (
@@ -91,7 +76,7 @@ export const GeneralEmployeesPage = () => {
           <span className={styles.contactsName}>Контактов</span>
           <div>
             <input
-              onChange={(e) => filterBySearch(e)}
+              onChange={filterBySearch}
               className={styles.searchBar}
               type="text"
               placeholder="Поиск (по ID)"
@@ -103,7 +88,11 @@ export const GeneralEmployeesPage = () => {
         </div>
 
         <div className={styles.tableContainer}>
-          <Table {...{ sortById, sortByNum, employees }} />
+          <Table
+            sortById={() => toggleSort('id')}
+            sortByNum={() => toggleSort('count')}
+            employees={employees}
+          />
         </div>
         <div className={styles.pagination}>
           {CreatePagination({
