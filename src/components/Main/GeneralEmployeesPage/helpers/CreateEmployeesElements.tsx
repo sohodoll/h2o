@@ -6,9 +6,9 @@ export const CreateEmployeesElements = ({
   sort,
 }: {
   pageNum: number;
-  sort?: { type: 'id' | 'count'; order: 'asc' | 'desc' };
+  sort: { type: 'id' | 'count'; order: 'asc' | 'desc' };
 }) => {
-  const employees = getSortedEmployees({ pageNum, sort });
+  const employees = getSortedEmployees({ sort });
   const pageEmployees = employees.slice((pageNum - 1) * 8, pageNum * 8);
 
   const mapped = pageEmployees.map((employee) => {
